@@ -48,8 +48,24 @@ const cartaControllers = {
         })
     },
     
-    modificarCategoria: async (req,res) =>{
-        
+    editarCategoria: async (req,res) =>{
+        console.log(req.body.categoriaEditada)
+        console.log(req.body.categoria.id)
+        try{
+            
+            await db.Categoria.update({
+                nombre: req.body.categoriaEditada.toUpperCase()
+                
+            },{
+                where: {
+                    id : req.body.categoria
+                }
+            })
+            res.redirect('/carta')
+        }
+        catch{
+            return res.send('<h1> Ha ocurrido un error </h1>')
+        }
     } 
     
 
