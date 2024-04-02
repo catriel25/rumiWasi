@@ -49,6 +49,24 @@ const cartaControllers = {
     },
     
     editarCategoria: async (req,res) =>{
+        
+        try{
+            
+            await db.Categoria.update({
+                nombre: req.body.categoriaEditada.toUpperCase()
+                
+            },{
+                where: {
+                    id : req.body.categoria
+                }
+            })
+            res.redirect('/carta')
+        }
+        catch{
+            return res.send('<h1> Ha ocurrido un error </h1>')
+        }
+    },
+    editarProducto: async (req,res) =>{
         console.log(req.body.categoriaEditada)
         console.log(req.body.categoria.id)
         try{
@@ -66,7 +84,8 @@ const cartaControllers = {
         catch{
             return res.send('<h1> Ha ocurrido un error </h1>')
         }
-    } 
+    }
+     
     
 
 }

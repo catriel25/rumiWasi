@@ -29,7 +29,7 @@
                     <form action="/carta/categoria" method="POST">
                         <label for="categoria">Agregar una Categoria</label>
                         <p><input name="categoria" type="text" required></p>
-                        <button type="submit">Agregar!</button>
+                        <button type="submit">Agregar categoria</button>
                         <% if (locals.categoriaAgregadaMsg) { %>
                             <p><%=categoriaAgregadaMsg%></p>
                         <% } %>
@@ -53,7 +53,7 @@
                         <% } %>
                         <label for="precio">Precio</label>
                         <p><input name="precio" type="number" required></p>
-                        <button type="submit">Agregar</button>
+                        <button type="submit">Agregar producto</button>
                         <% if (locals.productoAgregadoMsg) { %>
                             <p><%=productoAgregadoMsg%></p>
                         <% } %>
@@ -62,7 +62,8 @@
             </div>
             <div class="carta-main-editar">
                 <h2>Editar categorias y productos</h2>
-                <form action="/carta/categoria/update" method="POST">
+                <form action="/carta/categoria/update?_method=PUT" method="POST">
+                    <label for="categoria">Editar categoria</label>
                     <p><select name="categoria" required>
                         <option value="">Selecciona la categoria a editar</option>
                         <% if (locals.categorias) { %>
@@ -72,14 +73,27 @@
                         <% } %>
                     </select></p>
                     <input type="text" name="categoriaEditada">
-                    <button type="submit">Modificar</button>
+                    <button type="submit">Editar categoría</button>
                 </form>
-                <form action="carta/producto/update" method="POST">
-
+                <form action="carta/producto/update?_method=PUT" method="POST">
+                    <p><select name="producto" required>
+                        <option value="">Selecciona el producto a editar</option>
+                        <% if (locals.productos) { %>
+                            <%productos.forEach(function(producto){%>
+                                <option value="<%=producto.id%>"><%=producto.nombre%></option>
+                                
+                            <% }) %>
+                        <% } %>
+                    </select></p>
+                    <input type="text" name="productoNombreEditado">
+                    <button type="submit">Editar producto</button>
+                    <input type="number" name="productoPrecioEditado">
+                    <button type="submit">Editar precio</button>
                 </form>
 
             </div>
         </div>
     </main> 
+
 </body>
 </html>
