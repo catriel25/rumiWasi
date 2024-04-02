@@ -1,0 +1,43 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+    background-color: #ebebeb;
+
+}
+
+header {
+    background-color:rgb(150, 90, 64);
+}
+.header-top h1{
+    text-align: center;
+    
+}
+.top-navbar ul{
+    display: flex;
+    margin-left: 20px;
+}
+
+.top-navbar li{
+    list-style-type: none;
+    padding: 5px 15px;
+    
+}
+.top-navbar ul li a{
+    text-decoration: none;
+    color: #000;
+    font-weight: bolder;
+}
+
+main h2{
+    text-align: center;
+}
+
+.tables{
+    display: flex;
+}
