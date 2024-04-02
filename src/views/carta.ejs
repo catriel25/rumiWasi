@@ -1,0 +1,85 @@
+<html lang="en">
+<%- include('partials/head') %>
+
+<%- include('partials/header') %>
+    <main class="carta-main">
+        <div>
+            <h2>Carta de productos</h2>
+            <% if (locals.categorias) { %> <!-- imprimo categorias -->
+                <%categorias.forEach(function(categoria){ %>
+                    <p><%=categoria.nombre%></p>
+                    <% if (locals.productos) { %> <!-- imprimo productos -->
+                        <ul>
+                        <%productos.forEach(function(producto){%>
+                            <% if (categoria.id == producto.categoria_id) { %>
+                                <li><%=producto.nombre%>  $<%=producto.precio%></li>
+                            <% } %>
+                            
+                        <% }) %>
+                        </ul>
+                    <% } %>
+                
+                <% }) %>
+            <% } %>
+        </div>
+        <div class="carta-main-formularios">
+            <div class="carta-main-agregar">
+                <h2>Agregar categorías y productos</h2>
+                <div class="carta-main-agregar-categorias">
+                    <form action="/carta/categoria" method="POST">
+                        <label for="categoria">Agregar una Categoria</label>
+                        <p><input name="categoria" type="text" required></p>
+                        <button type="submit">Agregar!</button>
+                        <% if (locals.categoriaAgregadaMsg) { %>
+                            <p><%=categoriaAgregadaMsg%></p>
+                        <% } %>
+                    </form>
+                </div>
+                <div class="carta-main-agregar-productos">
+                    <form action="/carta/producto" method="POST">
+                        <label for="categoria">Nombre de la categoria</label>
+                        <p><select name="categoria" required>
+                            <option value="">Selecciona una Categoria</option>
+                            <% if (locals.categorias) { %>
+                                <%categorias.forEach(function(categoria){%>
+                                    <option value="<%=categoria.id%>"><%=categoria.nombre%></option>
+                                <% }) %>
+                            <% } %>
+                        </select></p>
+                        <label for="producto">Producto</label>
+                        <p><input name="producto" type="text" required></p>
+                        <% if (locals.productoAgregado) { %>
+                        <p>El producto que intentas agregar ya existe!</p>
+                        <% } %>
+                        <label for="precio">Precio</label>
+                        <p><input name="precio" type="number" required></p>
+                        <button type="submit">Agregar</button>
+                        <% if (locals.productoAgregadoMsg) { %>
+                            <p><%=productoAgregadoMsg%></p>
+                        <% } %>
+                    </form>
+                </div>
+            </div>
+            <div class="carta-main-editar">
+                <h2>Editar categorias y productos</h2>
+                <form action="/carta/categoria/update" method="POST">
+                    <p><select name="categoria" required>
+                        <option value="">Selecciona la categoria a editar</option>
+                        <% if (locals.categorias) { %>
+                            <%categorias.forEach(function(categoria){%>
+                                <option value="<%=categoria.id%>"><%=categoria.nombre%></option>
+                            <% }) %>
+                        <% } %>
+                    </select></p>
+                    <input type="text" name="categoriaEditada">
+                    <button type="submit">Modificar</button>
+                </form>
+                <form action="carta/producto/update" method="POST">
+
+                </form>
+
+            </div>
+        </div>
+    </main> 
+</body>
+</html>

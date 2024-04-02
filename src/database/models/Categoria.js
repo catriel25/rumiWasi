@@ -1,5 +1,5 @@
 module.exports = (sequelize, dataTypes) => {
-    let alias = 'Carta';
+    let alias = 'Categoria';
     let cols = {
         id: {
             type: dataTypes.INTEGER,
@@ -13,31 +13,23 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.STRING,
             allowNull: false,
             unique: true
-        },
-        precio : {
-            type: dataTypes.FLOAT,
-            allowNull: false
-        },
-        categoria_id: {
-            type: dataTypes.STRING,
-            unique: true
-        }
     }
+}
 
     let config = {
-        tableName: 'carta',
+        tableName: 'categorias',
         timestamps : false,
     }
     
-    const Carta = sequelize.define(alias, cols, config);
+    const Categoria = sequelize.define(alias, cols, config);
 
-    Carta.associate = function(models) {
-        Carta.belongsTo(models.Categoria, {
-            as: "categorias",
+    Categoria.associate = function(models) {
+        Categoria.hasMany(models.Carta, {
+            as: "carta",
             foreignKey: "categoria_id"
 
         });
     }
 
-    return Carta;
+    return Categoria;
 }
