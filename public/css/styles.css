@@ -34,19 +34,40 @@ header {
     font-weight: bolder;
 }
 
-main h2{
+.home-main h2{
     text-align: center;
 }
 
-.tables{
+.home-main-activo{
     display: flex;
+    flex-wrap: wrap;
 }
 
+.home-main-activo-mesa{
+    display: flex;
+    border-radius: 10px;
+    background-color: aquamarine;
+    height: 100px;
+    width: 200px;
+    font-size: 20px;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    font-weight: bold;
+    box-shadow: 0px 0px 10px rgb(100, 100, 100);
+}
+.home-main-activo a{
+    text-decoration: none;
+}
 
 .carta-main{
     display: flex;
     justify-content: space-between;
     margin: 10px 50px;
+}
+
+.carta-main-lista-productos{
+    padding: 15px 0px 15px 25px;
 }
 .carta-main-formularios{
     text-align: center;

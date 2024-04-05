@@ -66,17 +66,28 @@ const cartaControllers = {
             return res.send('<h1> Ha ocurrido un error </h1>')
         }
     },
+    detalleProducto: async (req, res) =>{
+        try{
+            let producto = await db.Carta.findByPk(req.params.id)
+            res.render('detalleProducto', {producto});
+        }
+        catch{
+            return res.send('<h1> Ha ocurrido un error </h1>')
+        }
+
+        
+    },
+
     editarProducto: async (req,res) =>{
-        console.log(req.body.categoriaEditada)
-        console.log(req.body.categoria.id)
         try{
             
-            await db.Categoria.update({
-                nombre: req.body.categoriaEditada.toUpperCase()
+            await db.Carta.update({
+                nombre: req.body.productoNombre,
+                precio : req.body.productoPrecio
                 
             },{
                 where: {
-                    id : req.body.categoria
+                    id : req.params.id
                 }
             })
             res.redirect('/carta')

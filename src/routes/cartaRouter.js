@@ -6,7 +6,8 @@ router.get('/', cartaControllers.list)
 router.post('/producto', cartaControllers.agregarProducto)
 router.post('/categoria', cartaControllers.agregarCategoria)
 router.put('/categoria/update', cartaControllers.editarCategoria)
-router.put('/producto/update', cartaControllers.editarProducto)
+router.get('/producto/:id', cartaControllers.detalleProducto)
+router.put('/producto/:id', cartaControllers.editarProducto)
 
 
 module.exports = router;
