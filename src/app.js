@@ -16,6 +16,7 @@ app.use(express.urlencoded({ extended: false }));
 
 //Para poder usar put y delete, porque a nadie se le ocurrió integrarlo
 app.use(methodOverride('_method'));
+app.use(express.json());
 
 //Entry point a las rutas
 app.use('/', indexRoutes);
