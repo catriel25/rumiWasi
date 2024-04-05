@@ -2,12 +2,18 @@
 <%- include('partials/head') %>
 
 <%- include('partials/header') %>
-    <main>
+    <main class="home-main">
         <h2>MESAS</h1>
-    </main>
-    <div class="tables">
 
-    </div>
+            <div class="home-main-activo">
+                <% for (let i = 0; i < 15; i++){ %>
+                    <a href="#"><div class="home-main-activo-mesa">
+                        Mesa <%=i%>
+                    </div></a>
+                <% } %>
+            </div>
+    </main>
+
 
 
 

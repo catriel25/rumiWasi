@@ -13,6 +13,7 @@ app.use(express.static('public'));
 
 //URL encode  para la verga esta de que me agarre el req.body trolo
 app.use(express.urlencoded({ extended: false }));
+app.use(express.json())
 
 //Para poder usar put y delete, porque a nadie se le ocurrió integrarlo
 app.use(methodOverride('_method'));

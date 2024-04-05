@@ -6,20 +6,22 @@
         <div>
             <h2>Carta de productos</h2>
             <% if (locals.categorias) { %> <!-- imprimo categorias -->
-                <%categorias.forEach(function(categoria){ %>
-                    <p><%=categoria.nombre%></p>
-                    <% if (locals.productos) { %> <!-- imprimo productos -->
-                        <ul>
-                        <%productos.forEach(function(producto){%>
-                            <% if (categoria.id == producto.categoria_id) { %>
-                                <li><%=producto.nombre%>  $<%=producto.precio%></li>
-                            <% } %>
-                            
-                        <% }) %>
-                        </ul>
-                    <% } %>
-                
-                <% }) %>
+                <ul>
+                    <%categorias.forEach(function(categoria){ %>
+                        <li><%=categoria.nombre%></li>
+                        <% if (locals.productos) { %> <!-- imprimo productos -->
+                            <ul class="carta-main-lista-productos">
+                            <%productos.forEach(function(producto){%>
+                                <% if (categoria.id == producto.categoria_id) { %>
+                                    <li><a href="carta/producto/<%=producto.id%>"><%=producto.nombre%>  $<%=producto.precio%></a></li>
+                                <% } %>
+                                
+                            <% }) %>
+                            </ul>
+                        <% } %>
+                    
+                    <% }) %>
+                </ul>
             <% } %>
         </div>
         <div class="carta-main-formularios">
@@ -75,22 +77,6 @@
                     <input type="text" name="categoriaEditada">
                     <button type="submit">Editar categoría</button>
                 </form>
-                <form action="carta/producto/update?_method=PUT" method="POST">
-                    <p><select name="producto" required>
-                        <option value="">Selecciona el producto a editar</option>
-                        <% if (locals.productos) { %>
-                            <%productos.forEach(function(producto){%>
-                                <option value="<%=producto.id%>"><%=producto.nombre%></option>
-                                
-                            <% }) %>
-                        <% } %>
-                    </select></p>
-                    <input type="text" name="productoNombreEditado">
-                    <button type="submit">Editar producto</button>
-                    <input type="number" name="productoPrecioEditado">
-                    <button type="submit">Editar precio</button>
-                </form>
-
             </div>
         </div>
     </main> 
