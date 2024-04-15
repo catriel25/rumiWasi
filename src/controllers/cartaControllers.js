@@ -95,7 +95,25 @@ const cartaControllers = {
         catch{
             return res.send('<h1> Ha ocurrido un error </h1>')
         }
-    }
+    },
+    editarProducto2: async (req,res) =>{
+        try{
+            
+            await db.Carta.update({
+                nombre: req.body.productoNombre,
+                precio : req.body.productoPrecio
+                
+            },{
+                where: {
+                    id : req.params.id
+                }
+            })
+            res.redirect('/carta')
+        }
+        catch{
+            return res.send('<h1> Ha ocurrido un error </h1>')
+        }
+    },
      
     
 
