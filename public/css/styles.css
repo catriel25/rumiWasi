@@ -34,13 +34,27 @@ header {
     font-weight: bolder;
 }
 
+.home-main{
+    display: flex;
+}
+
 .home-main h2{
     text-align: center;
 }
 
+.home-main-agregar{
+     width: 15%;
+     height: 600px;
+     background-color: antiquewhite;
+     padding: 20px;
+}
+.home-main-section-activo{
+    width: 85%;
+}
 .home-main-activo{
     display: flex;
     flex-wrap: wrap;
+    
 }
 
 .home-main-activo-mesa{
@@ -66,12 +80,18 @@ header {
     margin: 10px 50px;
 }
 
-.carta-main-lista-productos{
+.carta-main-lista{
     padding: 15px 0px 15px 25px;
 }
-.carta-main-formularios{
-    text-align: center;
+
+.carta-main-lista-producto{
+    display: flex;
 }
+
+.carta-main-lista-producto-nombre{
+    width: 250px; 
+}
+
 .carta-main-agregar-categorias{
     margin: 30px 0px;
     font-size: 12px;

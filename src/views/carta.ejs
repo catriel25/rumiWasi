@@ -10,10 +10,17 @@
                     <%categorias.forEach(function(categoria){ %>
                         <li><%=categoria.nombre%></li>
                         <% if (locals.productos) { %> <!-- imprimo productos -->
-                            <ul class="carta-main-lista-productos">
+                            <ul class="carta-main-lista">
                             <%productos.forEach(function(producto){%>
                                 <% if (categoria.id == producto.categoria_id) { %>
-                                    <li><a href="carta/producto/<%=producto.id%>"><%=producto.nombre%>  $<%=producto.precio%></a></li>
+                                    <li><a href="carta/producto/<%=producto.id%>" class="carta-main-lista-producto">
+                                        <div class="carta-main-lista-producto-nombre">
+                                            <%=producto.nombre%>
+                                        </div>
+                                        <div>
+                                            $<%=producto.precio%>
+                                        </div>
+                                    </a></li>
                                 <% } %>
                                 
                             <% }) %>
@@ -63,7 +70,7 @@
                 </div>
             </div>
             <div class="carta-main-editar">
-                <h2>Editar categorias y productos</h2>
+                <h2>Editar categorias</h2>
                 <form action="/carta/categoria/update?_method=PUT" method="POST">
                     <label for="categoria">Editar categoria</label>
                     <p><select name="categoria" required>
@@ -77,39 +84,9 @@
                     <input type="text" name="categoriaEditada">
                     <button type="submit">Editar categoría</button>
                 </form>
-
-                <form action="/carta/producto/update?_method=PUT" method="POST">
-                    <label for="categoriaProducto">Editar categoria</label>
-                    <p><select name="categoriaProducto" required id="categoriaProducto">
-                        <option value="">Selecciona la categoria</option>
-                        <% if (locals.categorias) { %>
-                            <%categorias.forEach(function(categoria){%>
-                                <option value="<%=categoria.id%>"><%=categoria.nombre%></option>
-                            <% }) %>
-                        <% } %>
-                    </select></p>
-                    <p><select name="producto" required id="producto">
-                        <option value="">Selecciona el produto a editar</option>
-                        <% if (locals.categorias) { %>
-                            <%categorias.forEach(function(categoria){%>
-                                <option value="<%=categoria.id%>"><%=categoria.nombre%></option>
-                            <% }) %>
-                        <% } %>
-                    </select></p>
-                    <input type="text" name="categoriaEditada">
-                    <button type="submit">Editar categoría</button>
-                </form>
             </div>
         </div>
     </main> 
 
-   
-    <script>
-        const categorias = <%- JSON.stringify(categorias) %>;
-        const productos = <%- JSON.stringify(productos) %>
-
-    </script>
-
-    <script src="/js/carta.js"></script>
 </body>
 </html>

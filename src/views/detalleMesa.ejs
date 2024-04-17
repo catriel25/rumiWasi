@@ -1,0 +1,43 @@
+<html lang="en">
+<%- include('partials/head') %>
+
+<%- include('partials/header') %>
+
+    <main>
+        <h2>Mesa <%= mesaActual.id %></h2>
+        <section class="detalle-mesa-pedidos-agregar">
+            <form action="/<%= mesaActual.id%>" method="POST">
+
+                <label for="categoria">Agregar Producto</label>
+                <p><select name="categoria" id="categoriaSelect" required>
+                    <option value="">Selecciona la categoria</option>
+                    <% if (locals.categorias) { %>
+                        <%categorias.forEach(function(categoria){%>
+                            <option value="<%=categoria.id%>"><%=categoria.nombre%></option>
+                        <% }) %>
+                    <% } %>
+                </select></p>
+                <p><select name="producto" id="productoElegido">
+                    <option value="">Selecciona el producto</option>
+
+                </select></p>
+                <label for="cantidad">Cantidad</label>
+                <p><input type="number" name="cantidad"></p>
+                <button type="submit">Agregar pedido</button>
+            </form>
+        </section>
+        <section class="detalle-mesa-pedidos">
+
+
+        </section>
+        
+    </main> 
+    <script>
+        const categorias = <%- JSON.stringify(categorias) %>;
+        const productos = <%- JSON.stringify(productos) %>
+
+    </script>
+
+    <script src="/js/detalleMesa.js"></script>
+</body>
+</html>

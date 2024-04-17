@@ -3,15 +3,30 @@
 
 <%- include('partials/header') %>
     <main class="home-main">
-        <h2>MESAS</h1>
-
+        
+        <section class="home-main-agregar">
+            <h2>AGREGAR MESAS</h2>
+            <form action="/" method="POST">
+                <label for="mesaId">Numero de Mesa</label>
+                <p><input type="number" name="mesaId" required></p>
+                <button type="submit">Agregar nueva mesa</button>
+            </form>
+            <% if (locals.mensajeError) { %>
+                <p style="color:red"><%= mensajeError %></p>
+            <% } %>
+        </section>
+        
+        <section class="home-main-section-activo">
+            <h2>MESAS ACTIVAS</h2>
             <div class="home-main-activo">
-                <% for (let i = 0; i < 15; i++){ %>
-                    <a href="#"><div class="home-main-activo-mesa">
-                        Mesa <%=i%>
+                
+                <% for (let i = 0; i < mesasActivas.length; i++){ %>
+                    <a href="/mesas/<%= mesasActivas[i].id%>"><div class="home-main-activo-mesa">
+                        Mesa <%=mesasActivas[i].id%>
                     </div></a>
                 <% } %>
             </div>
+        </section>
     </main>
 
 
