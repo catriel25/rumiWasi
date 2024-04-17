@@ -6,7 +6,7 @@
     <main>
         <h2>Mesa <%= mesaActual.id %></h2>
         <section class="detalle-mesa-pedidos-agregar">
-            <form action="/<%= mesaActual.id%>" method="POST">
+            <form action="/mesas/<%= mesaActual.id%>" method="POST">
 
                 <label for="categoria">Agregar Producto</label>
                 <p><select name="categoria" id="categoriaSelect" required>
@@ -17,12 +17,9 @@
                         <% }) %>
                     <% } %>
                 </select></p>
-                <p><select name="producto" id="productoElegido">
-                    <option value="">Selecciona el producto</option>
-
-                </select></p>
-                <label for="cantidad">Cantidad</label>
-                <p><input type="number" name="cantidad"></p>
+                <table id="productosList">
+                    <!-- Aquí se agregarán dinámicamente los productos -->
+                </table>
                 <button type="submit">Agregar pedido</button>
             </form>
         </section>
