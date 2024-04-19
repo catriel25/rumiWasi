@@ -104,3 +104,18 @@ header {
 .carta-main-editar{
     margin-top: 10px;
 }
+
+.detalle-mesa-main h2{
+    text-align: center;
+}
+.detalle-mesa-contenedor{
+    display: flex;    
+}
+
+.detalle-mesa-pedidos-agregar{
+    width: 50%;
+}
+
+.detalle-mesa-pedidos{
+    width: 50%;
+}
