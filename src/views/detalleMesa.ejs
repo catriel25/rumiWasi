@@ -19,13 +19,42 @@
                         <% } %>
                     </select></p>
                     <table id="productosList">
-                        <!-- Aquí se agregarán dinámicamente los productos -->
+                        <!-- Acá se agregan dinamicamente las opciones de producto de c/categoria -->
                     </table>
                     <button type="submit">Agregar pedido</button>
                 </form>
             </section>
             <section class="detalle-mesa-pedidos">
-                
+                <form action="">
+                    <table id="pedido">
+                        <thead>
+                            <tr>
+                                <th>Productos</th>
+                                <th>Cantidad</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% let totalMesa = 0; %>
+                            <% mesaActual.pedidos.forEach((productoPedido, i)=>{ %>
+                                
+                            </tr>
+                                    <% producto = productos.find((producto) => producto.id == productoPedido.id) %>
+                                    <td><%= producto.nombre %></td>
+                                    <td class="cantidad-productos"><button>-</button><%= productoPedido.cantidad %><button>-</button></td>
+                                    <input type="hidden" name="<% i %>" value="<%= productoPedido.cantidad %>">
+                                    <td><%= productoPedido.precio * productoPedido.cantidad %></td>
+                                </tr>
+                                <% totalMesa = totalMesa + (productoPedido.precio * productoPedido.cantidad); %>
+                        <%  }) %>
+                                <tr>
+                                    <td></td>
+                                    <td>Total Mesa: </td>
+                                    <td><%= totalMesa %></td>  
+                                </tr>
+                        </tbody>
+                    </table>
+                </form>
 
             </section>
         </div>

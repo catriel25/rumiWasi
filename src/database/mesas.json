@@ -7,56 +7,57 @@
     "id": "2",
     "pedidos": [
       {
-        "13": "2",
-        "15": "1"
+        "cantidad": 3,
+        "precio": 500,
+        "id": 13,
+        "nombre": "Cerveza"
       },
       {
-        "13": "3"
+        "cantidad": 3,
+        "precio": 4000,
+        "id": 15,
+        "nombre": "Gin"
+      },
+      {
+        "cantidad": 4,
+        "precio": 1000,
+        "id": 14,
+        "nombre": "Tortas"
+      },
+      {
+        "cantidad": 2,
+        "precio": 500,
+        "id": 13,
+        "nombre": "Cerveza"
+      },
+      {
+        "cantidad": 3,
+        "precio": 4000,
+        "id": 15,
+        "nombre": "Gin"
       }
     ]
   },
   {
-    "id": "4",
-    "pedidos": []
-  },
-  {
-    "id": "8",
-    "pedidos": []
-  },
-  {
-    "id": "85",
-    "pedidos": []
-  },
-  {
-    "id": "3",
-    "pedidos": []
-  },
-  {
-    "id": "4",
-    "pedidos": []
-  },
-  {
-    "id": "9",
-    "pedidos": []
-  },
-  {
-    "id": "10",
-    "pedidos": []
-  },
-  {
-    "id": "11",
-    "pedidos": []
-  },
-  {
-    "id": "60",
-    "pedidos": []
-  },
-  {
-    "id": "99",
-    "pedidos": []
-  },
-  {
-    "id": "150",
-    "pedidos": []
+    "id": "5",
+    "pedidos": [
+      [
+        {
+          "cantidad": 2,
+          "precio": 2000,
+          "id": 18
+        },
+        {
+          "cantidad": 2,
+          "precio": 5000,
+          "id": 19
+        },
+        {
+          "cantidad": 12,
+          "precio": 1000,
+          "id": 20
+        }
+      ]
+    ]
   }
 ]
