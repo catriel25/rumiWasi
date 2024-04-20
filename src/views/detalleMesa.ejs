@@ -23,9 +23,12 @@
                     </table>
                     <button type="submit">Agregar pedido</button>
                 </form>
+                <form id="formulario-eliminar-mesa" action="/mesas/<%= mesaActual.id%>/eliminar?_method=DELETE" method="POST">
+                    <button type="submit" id="boton-eliminar-mesa">Eliminar Mesa</button>
+                </form>
             </section>
             <section class="detalle-mesa-pedidos">
-                <form action="">
+                <form action="/mesas/<%= mesaActual.id%>?_method=PUT" method="POST">
                     <table id="pedido">
                         <thead>
                             <tr>
@@ -41,8 +44,7 @@
                             </tr>
                                     <% producto = productos.find((producto) => producto.id == productoPedido.id) %>
                                     <td><%= producto.nombre %></td>
-                                    <td class="cantidad-productos"><button>-</button><%= productoPedido.cantidad %><button>-</button></td>
-                                    <input type="hidden" name="<% i %>" value="<%= productoPedido.cantidad %>">
+                                    <td class="cantidad-productos"><%= productoPedido.cantidad %></td>
                                     <td><%= productoPedido.precio * productoPedido.cantidad %></td>
                                 </tr>
                                 <% totalMesa = totalMesa + (productoPedido.precio * productoPedido.cantidad); %>
@@ -54,6 +56,10 @@
                                 </tr>
                         </tbody>
                     </table>
+                    <button type="submit">Editar Mesa</button>
+                </form>
+                <form id="formulario-cerrar-mesa" action="/mesas/<%= mesaActual.id%>?_method=DELETE" method="POST">
+                    <button type="submit" id="boton-cerrar-mesa">Cerrar Mesa</button>
                 </form>
 
             </section>

@@ -1,22 +1,22 @@
 const fs = require('fs');
 const path = require('path');
 const mesasFilePath = path.join(__dirname, '../database/mesas.json');
-const mesasActivas = JSON.parse(fs.readFileSync(mesasFilePath, 'utf-8'));
+
 
 const mainControllers = {
 
     index: (req, res)=>{
-        
+        const mesasActivas = JSON.parse(fs.readFileSync(mesasFilePath, 'utf-8'));
         res.render('home', {mesasActivas});
     },
     agregarMesa: (req, res) =>{
         let mesaId = req.body.mesaId
-
+        const mesasActivas = JSON.parse(fs.readFileSync(mesasFilePath, 'utf-8'));
         const mesaExiste = mesasActivas.find((mesa) => mesa.id == mesaId);
 
         if (!mesaExiste) {
             const nuevaMesa = {
-                id: mesaId,
+                id: parseInt(mesaId),
                 pedidos : []
             }
     
