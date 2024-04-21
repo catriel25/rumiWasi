@@ -1,6 +1,7 @@
 <html lang="en">
 <%- include('partials/head') %>
-
+<link rel="stylesheet" href="/css/stylesCarta.css">
+</head>
 <%- include('partials/header') %>
     <main class="carta-main">
         <div>
@@ -8,23 +9,21 @@
             <% if (locals.categorias) { %> <!-- imprimo categorias -->
                 <ul>
                     <%categorias.forEach(function(categoria){ %>
-                        <li><%=categoria.nombre%></li>
+                        <li class="categorias-listado"><%=categoria.nombre%></li>
                         <% if (locals.productos) { %> <!-- imprimo productos -->
-                            <ul class="carta-main-lista">
-                            <%productos.forEach(function(producto){%>
-                                <% if (categoria.id == producto.categoria_id) { %>
-                                    <li><a href="carta/producto/<%=producto.id%>" class="carta-main-lista-producto">
-                                        <div class="carta-main-lista-producto-nombre">
-                                            <%=producto.nombre%>
-                                        </div>
-                                        <div>
-                                            $<%=producto.precio%>
-                                        </div>
-                                    </a></li>
-                                <% } %>
-                                
-                            <% }) %>
-                            </ul>
+                            <table>
+                                <tbody>
+                                    <%productos.forEach(function(producto){%>
+                                        <% if (categoria.id == producto.categoria_id) { %>
+                                            <tr>
+                                                <td class="carta-main-producto-nombre"><a href="carta/producto/<%=producto.id%>" class="carta-main-lista-producto"><%=producto.nombre%></a></td>                                                    
+                                                <td><a href="carta/producto/<%=producto.id%>">$<%=producto.precio.toLocaleString()%></a></td>
+                                                </tr>
+                                        <% } %>
+                                        
+                                    <% }) %>
+                                </tbody>
+                            </table>
                         <% } %>
                     
                     <% }) %>
@@ -38,7 +37,7 @@
                     <form action="/carta/categoria" method="POST">
                         <label for="categoria">Agregar una Categoria</label>
                         <p><input name="categoria" type="text" required></p>
-                        <button type="submit">Agregar categoria</button>
+                        <button type="submit" id="boton-agregar-categoria">Agregar categoria</button>
                         <% if (locals.categoriaAgregadaMsg) { %>
                             <p><%=categoriaAgregadaMsg%></p>
                         <% } %>
@@ -71,9 +70,9 @@
             </div>
             <div class="carta-main-editar">
                 <h2>Editar categorias</h2>
-                <form action="/carta/categoria/update?_method=PUT" method="POST">
+                <form id="formulario-edicion-eliminar" action="" method="POST">
                     <label for="categoria">Editar categoria</label>
-                    <p><select name="categoria" required>
+                    <p><select name="categoria" id="categoria-editar-eliminar" required>
                         <option value="">Selecciona la categoria a editar</option>
                         <% if (locals.categorias) { %>
                             <%categorias.forEach(function(categoria){%>
@@ -82,11 +81,12 @@
                         <% } %>
                     </select></p>
                     <input type="text" name="categoriaEditada">
-                    <button type="submit">Editar categoría</button>
+                    <button type="submit" id="boton-editar-categoria">Editar Categoría</button>
+                    <button type="submit" id="boton-eliminar-categoria">Eliminar Categoría</button>
                 </form>
             </div>
         </div>
     </main> 
-
+    <script src="/js/carta.js"></script>
 </body>
 </html>

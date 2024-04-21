@@ -1,6 +1,6 @@
 <html lang="en">
 <%- include('partials/head') %>
-
+</head>
 <%- include('partials/header') %>
 
     <main class="detalle-mesa-main">
@@ -44,15 +44,15 @@
                             </tr>
                                     <% producto = productos.find((producto) => producto.id == productoPedido.id) %>
                                     <td><%= producto.nombre %></td>
-                                    <td class="cantidad-productos"><%= productoPedido.cantidad %></td>
-                                    <td><%= productoPedido.precio * productoPedido.cantidad %></td>
+                                    <td class="cantidad-productos"><%= productoPedido.cantidad.toLocaleString() %></td>
+                                    <td>$<%= (productoPedido.precio * productoPedido.cantidad).toLocaleString() %></td>
                                 </tr>
                                 <% totalMesa = totalMesa + (productoPedido.precio * productoPedido.cantidad); %>
                         <%  }) %>
                                 <tr>
                                     <td></td>
                                     <td>Total Mesa: </td>
-                                    <td><%= totalMesa %></td>  
+                                    <td>$<%= totalMesa.toLocaleString() %></td>  
                                 </tr>
                         </tbody>
                     </table>

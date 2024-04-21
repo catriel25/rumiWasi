@@ -28,10 +28,10 @@ const cartaControllers = {
             const categorias = await db.Categoria.findAll();
             return res.render('carta', {productos, categorias, productoAgregado});
         }
-        
+        let nombreProducto = (req.body.producto)[0].toUpperCase() + (req.body.producto).slice(1);
         db.Carta.create({
             categoria_id : req.body.categoria,
-            nombre: req.body.producto,
+            nombre: nombreProducto,
             precio: req.body.precio
         })
         .then(function(){
@@ -66,6 +66,23 @@ const cartaControllers = {
             return res.send('<h1> Ha ocurrido un error </h1>')
         }
     },
+
+    eliminarCategoria: async (req,res) =>{
+        
+        try{
+            
+            await db.Categoria.destroy({
+                where: {
+                    id : req.body.categoria
+                }
+            })
+            res.redirect('/carta')
+        }
+        catch{
+            return res.send('<h1> Ha ocurrido un error </h1>')
+        }
+    },
+
     detalleProducto: async (req, res) =>{
         try{
             let producto = await db.Carta.findByPk(req.params.id)
@@ -78,7 +95,7 @@ const cartaControllers = {
         
     },
 
-    editarProducto: async (req,res) =>{
+    editarProducto: async (req, res) =>{
         try{
             
             await db.Carta.update({
@@ -96,14 +113,10 @@ const cartaControllers = {
             return res.send('<h1> Ha ocurrido un error </h1>')
         }
     },
-    editarProducto2: async (req,res) =>{
+    eliminarProducto: async (req, res) =>{
         try{
             
-            await db.Carta.update({
-                nombre: req.body.productoNombre,
-                precio : req.body.productoPrecio
-                
-            },{
+            await db.Carta.destroy({
                 where: {
                     id : req.params.id
                 }
@@ -113,8 +126,7 @@ const cartaControllers = {
         catch{
             return res.send('<h1> Ha ocurrido un error </h1>')
         }
-    },
-     
+    }
     
 
 }

@@ -1,0 +1,30 @@
+.carta-main{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 50px;
+}
+
+.carta-main-lista{
+    padding: 15px 0px 15px 25px;
+}
+
+.carta-main-lista-producto{
+    display: flex;
+}
+
+.carta-main-producto-nombre{
+    width: 250px; 
+}
+
+.carta-main-agregar-categorias{
+    margin: 30px 0px;
+    font-size: 12px;
+}
+
+.carta-main-agregar-productos{
+    font-size: 12px;
+}
+
+.carta-main-editar{
+    margin-top: 10px;
+}

@@ -1,6 +1,6 @@
 <html lang="en">
 <%- include('partials/head') %>
-
+</head>
 <%- include('partials/header') %>
 
     <main class="detalle-producto-main">
@@ -12,8 +12,11 @@
             <p><label for="productoPrecio">Precio</label>
             <input type="number" name="productoPrecio" value="<%=producto.precio%>">
             </p>
-            <button type="submit">Editar producto</button>
+            <button type="submit">Editar Producto</button>
             
+        </form>
+        <form action="/carta/producto/<%=producto.id%>?_method=DELETE" method="POST">
+            <button type="submit">Eliminar Producto</button>
         </form>
     </main> 
 

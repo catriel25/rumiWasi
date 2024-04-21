@@ -1,1 +1,19 @@
-[]
+[
+  {
+    "id": 5,
+    "pedidos": [
+      {
+        "cantidad": 2,
+        "precio": 500,
+        "id": 13,
+        "nombre": "Cerveza"
+      },
+      {
+        "cantidad": 3,
+        "precio": 4000,
+        "id": 15,
+        "nombre": "Gin"
+      }
+    ]
+  }
+]
