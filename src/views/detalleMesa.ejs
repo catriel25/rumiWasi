@@ -41,13 +41,15 @@
                             <% let totalMesa = 0; %>
                             <% mesaActual.pedidos.forEach((productoPedido, i)=>{ %>
                                 
-                            </tr>
+                                </tr>
                                     <% producto = productos.find((producto) => producto.id == productoPedido.id) %>
+                                    <% if(producto) { %>
                                     <td><%= producto.nombre %></td>
                                     <td class="cantidad-productos"><%= productoPedido.cantidad.toLocaleString() %></td>
                                     <td>$<%= (productoPedido.precio * productoPedido.cantidad).toLocaleString() %></td>
                                 </tr>
                                 <% totalMesa = totalMesa + (productoPedido.precio * productoPedido.cantidad); %>
+                                <% } %>
                         <%  }) %>
                                 <tr>
                                     <td></td>

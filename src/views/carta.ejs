@@ -36,7 +36,7 @@
                 <div class="carta-main-agregar-categorias">
                     <form action="/carta/categoria" method="POST">
                         <label for="categoria">Agregar una Categoria</label>
-                        <p><input name="categoria" type="text" required></p>
+                        <p><input name="categoria" type="text" id="categoria-a-agregar" required></p>
                         <button type="submit" id="boton-agregar-categoria">Agregar categoria</button>
                         <% if (locals.categoriaAgregadaMsg) { %>
                             <p><%=categoriaAgregadaMsg%></p>
@@ -55,13 +55,13 @@
                             <% } %>
                         </select></p>
                         <label for="producto">Producto</label>
-                        <p><input name="producto" type="text" required></p>
+                        <p><input name="producto" type="text" id="producto-a-agregar" required></p>
                         <% if (locals.productoAgregado) { %>
                         <p>El producto que intentas agregar ya existe!</p>
                         <% } %>
                         <label for="precio">Precio</label>
                         <p><input name="precio" type="number" required></p>
-                        <button type="submit">Agregar producto</button>
+                        <button type="submit" id="boton-agregar-producto">Agregar producto</button>
                         <% if (locals.productoAgregadoMsg) { %>
                             <p><%=productoAgregadoMsg%></p>
                         <% } %>
@@ -87,6 +87,11 @@
             </div>
         </div>
     </main> 
+    <script>
+        const categorias = <%- JSON.stringify(categorias) %>;
+        const productos = <%- JSON.stringify(productos) %>
+
+    </script>
     <script src="/js/carta.js"></script>
 </body>
 </html>

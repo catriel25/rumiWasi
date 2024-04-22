@@ -2,9 +2,47 @@ window.addEventListener('load', () =>{
     const formularioEditarEliminar = document.getElementById('formulario-edicion-eliminar');
     const botonEditarCategoria = document.getElementById('boton-editar-categoria');
     const botonEliminarCategoria = document.getElementById('boton-eliminar-categoria');
+    const botonAgregarCategoria = document.getElementById('boton-agregar-categoria')
+    const botonAgregarProducto = document.getElementById('boton-agregar-producto')
     const categoriaEditarEliminar = document.getElementById('categoria-editar-eliminar');
-    const categorias = document.querySelectorAll('.categorias-listado');
+ 
 
+    botonAgregarCategoria.addEventListener('click', (event) =>{
+        let opcion = document.getElementById('categoria-a-agregar').value;
+        let existe = false;
+        categorias.forEach((categoria)=> {
+            if(opcion.toUpperCase() == categoria.nombre){
+                existe = true;
+                alert('Ya existe una categoría con ese nombre');
+                
+            }
+    
+        })
+        if(existe){
+            event.preventDefault();
+
+        
+        }
+    })
+    
+    botonAgregarProducto.addEventListener('click', (event) =>{
+        let opcion = document.getElementById('producto-a-agregar').value;
+        let existe = false;
+        productos.forEach((producto)=> {
+            if(opcion.toUpperCase() == producto.nombre.toUpperCase()){
+                existe = true;
+                alert('Ya existe un producto con ese nombre');
+                
+            }
+    
+        })
+        if(existe){
+            event.preventDefault();
+
+        
+        }
+    })
+        
 
     let nombreCategoriaEditarEliminar = "";
 
@@ -24,17 +62,22 @@ window.addEventListener('load', () =>{
 
         }
         else{
-            //aca me quede
+            let existe = false;
             categorias.forEach((categoria)=> {
-                if(nombreCategoriaEditarEliminar.toUpperCase() == categoria.innerText){
-                    event.preventDefault();
+                if(nombreCategoriaEditarEliminar.toUpperCase() == categoria.nombre){
+                    existe = true;
                     alert('Ya existe una categoría con ese nombre');
-                    break;
-
+                    
                 }
         
             })
-            alert('Se modificó el nombre de la categoría');
+            if(existe){
+                event.preventDefault();
+            }
+            else{
+                alert('Se modificó el nombre de la categoría');
+            }
+            
                 
         }
     })
